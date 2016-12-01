@@ -6,10 +6,10 @@ layout: page
             <div class="row">
                 <div >
                     {% for post in paginator.posts %}
-                        {% include tile.html %}
+                        {% include {{site.baseurl}}/tile.html %}
                     {% endfor %}
 
-                    {% include pagination.html %}
+                    {% include {{site.baseurl}}/pagination.html %}
                 </div>
                 
             </div>
