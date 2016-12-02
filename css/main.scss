@@ -13,13 +13,18 @@ body {
 
 
 .bg-1 { 
-    background-color: #D0D0D0 ; /* Green */
+    background-color: #F8F8F8 ; /* Green */
     color: #ffffff;
 }
 
 .container-fluid {
     padding-top: 70px;
     padding-bottom: 70px;
+}
+.jumbotron
+{
+     background:transparent !important;
+	
 }
 
 // Import partials from `sass_dir` (defaults to `_sass`)
