@@ -2,7 +2,7 @@
 layout: post
 title:  "How to build a min heap with a remove function"
 date:   2016-12-02 14:45:20 -0600
-categories: C++11;Algorithim
+categories: [C++11,Algorithm]
 ---
 As we know the C++ 11 provided us a lot of great functionalities. It is 
 very convinect for us to use these functionalities to address our issues.
