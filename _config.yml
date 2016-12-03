@@ -25,6 +25,7 @@ github_username:  EthanHao
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
 
 paginate: 5
 paginate_path: /page:num
