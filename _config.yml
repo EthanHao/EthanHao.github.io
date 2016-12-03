@@ -27,6 +27,7 @@ github_username:  EthanHao
 kramdown:
   # Use GitHub flavored markdown, including triple backtick fenced code blocks
   input: GFM
+  hard_wrap: false
   # Jekyll 3 and GitHub Pages now only support rouge for syntax highlighting
   syntax_highlighter: rouge
   syntax_highlighter_opts:
@@ -38,6 +39,7 @@ paginate: 5
 paginate_path: /page:num
     
 gems:
+  - jekyll-coffeescript
   - jekyll-feed
   - jekyll-paginate
 
