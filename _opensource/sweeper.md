@@ -1,6 +1,7 @@
 ---
 thumbnail-path: "/img/sweeper.png"
 title:  "Sweeper simulation"
-short-description: "As we know the C++ 11 provided us a lot of great functionalities. It is very convinect for us to use these functionalities to address our issues."
-url: "https://github.com/EthanHao/SweepClean"
+traits: "Java,Java Swing,GUI,Shortest Path, etc"
+short-description: "This application is a simulation for a fictional clean sweeper. You can know how the clean sweeper works through this application hopefully."
+Address: "https://github.com/EthanHao/SweepClean"
 ---

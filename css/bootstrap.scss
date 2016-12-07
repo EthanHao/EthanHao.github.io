@@ -3,5 +3,13 @@
 ---
 @charset "utf-8";
 
+
+
+.container{
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import "bootstrap-sass/bootstrap";
