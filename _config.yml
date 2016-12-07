@@ -33,12 +33,13 @@ gems:
   - jekyll-feed
   - jekyll-paginate
   - jemoji
+  - bootstrap
 
 collections:
-        opensource:
-                output: false
-        portfolio:
-                output: true
+    opensource:
+       output: false
+    portfolio:
+       output: true
   
 exclude:
   - Gemfile
