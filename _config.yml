@@ -23,7 +23,7 @@ baseurl:  ""
 url: http://www.xyzway.com
 github_username:  EthanHao
 
-
+theme: minima
 paginate: 5
 paginate_path: /page:num
 highlight: rouge
@@ -34,8 +34,6 @@ kramdown:
   syntax_highlighter: rouge
 
 gems:
-  - jekyll-sitemap
-  - jekyll-coffeescript
   - jekyll-feed
   - jekyll-paginate
   - jemoji
