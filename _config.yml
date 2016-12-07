@@ -32,7 +32,13 @@ gems:
   - jekyll-coffeescript
   - jekyll-feed
   - jekyll-paginate
+  - jemoji
 
+collections:
+        opensource:
+                output: false
+        portfolio:
+                output: true
   
 exclude:
   - Gemfile

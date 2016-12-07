@@ -1,22 +1,26 @@
    
-     <nav class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/aboutme.html">Ethan Hao</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/index.html">Blog</a></li>
-            <li><a href="/resume.html">Resume</a></li>
-            <li><a href="/opensource.html">OpenSource</a></li>
-            <li><a href="/portfolio/html">Portfolio</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+   
+       
+		 <nav class="navbar navbar-static-top navbar-dark bg-inverse">
+			<a class="navbar-brand" href="#">Ethan Hao</a>
+			<ul class="nav navbar-nav">
+			<li {% if page.url == '/' %} class="nav-item  active" {%else%} class="nav-item " {%endif%} >
+					<a class="nav-link" href="/index.html">BLOG <span class="sr-only">(current)</span></a>
+			</li>
+			<li {% if page.url == '/resume.html' %} class="nav-item  active" {%else%} class="nav-item " {%endif%} >
+				<a class="nav-link" href="/resume.html">RESUME</a>
+			</li>
+			<li {% if page.url == '/opensource.html' %} class="nav-item  active" {%else%} class="nav-item " {%endif%} >
+				<a class="nav-link" href="/opensource.html">OPENSOURCE</a>
+			</li>
+			<li {% if page.url == '/portfolio.html' %} class="nav-item  active" {%else%} class="nav-item " {%endif%} >
+				<a class="nav-link" href="/portfolio.html">PORTFOLIO</a>
+			</li>
+		
+			</ul>
+        </nav>
+
+	
+       
+    
+	
