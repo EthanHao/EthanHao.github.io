@@ -23,7 +23,7 @@ So according the requiement of this problem,the tricky part is we don't need to 
 
 The code looks like this:
 
-```cpp
+{% highlight cpp %}
 template<typename T>
 class custom_priority_queue :
 	public std::priority_queue<T, std::deque<T>, std::greater<T>>
@@ -66,4 +66,4 @@ public:
 	}
 
 };
-```
+{% endhighlight  %}

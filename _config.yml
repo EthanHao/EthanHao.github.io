@@ -26,14 +26,20 @@ github_username:  EthanHao
 
 paginate: 5
 paginate_path: /page:num
-    
+highlight: rouge
+markdown:  kramdown 
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
+
 gems:
   - jekyll-sitemap
   - jekyll-coffeescript
   - jekyll-feed
   - jekyll-paginate
   - jemoji
-  - bootstrap
+
 
 collections:
     opensource:

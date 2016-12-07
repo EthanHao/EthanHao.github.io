@@ -9,11 +9,6 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
-    autoprefixer-rails (6.5.3.1)
-      execjs
-    bootstrap (4.0.0.alpha5)
-      autoprefixer-rails (>= 6.0.3)
-      sass (>= 3.4.19)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -63,8 +58,6 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
     mercenary (0.3.6)
     mini_portile2 (2.1.0)
-    minima (2.1.0)
-      jekyll (~> 3.3)
     minitest (5.8.3)
     nokogiri (1.6.8.1-x64-mingw32)
       mini_portile2 (~> 2.1.0)
@@ -86,14 +79,12 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  bootstrap
   jekyll (= 3.3.1)
   jekyll-coffeescript
   jekyll-feed (~> 0.6)
   jekyll-paginate
   jekyll-sitemap
   jemoji
-  minima (~> 2.0)
 
 RUBY VERSION
    ruby 2.3.1p112
