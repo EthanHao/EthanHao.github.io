@@ -5,6 +5,7 @@ date:   2016-12-02 13:45:20 -0600
 categories: jekyll installation
 ---
 Trying to use Jekyll to windows.But after installation of Ruby of newest version.I get a trouble to install the Jekyll using  
+
 > `gem instal jekyll`  
 > Unable to download data from https://rubygems.org/ - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (https://api.rubygems.org/specs.4.8.gz)  
 
