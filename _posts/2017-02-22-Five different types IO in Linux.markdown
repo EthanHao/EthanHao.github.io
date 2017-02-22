@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Five different types IO in Linux"
-date:   2017-02-022 10:45:20 -0600
-categories: C,Linux
+title:  "Five different types IO in Linux"
+date:   2017-02-22 10:45:20 -0600
+categories: C,Linux,IO
 ---
 There are five different type IO model under Linux , they are respectively  
 *Blocking IO  
