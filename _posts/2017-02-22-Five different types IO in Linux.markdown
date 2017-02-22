@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title:  "Five different types IO in Linux"
@@ -9,7 +8,7 @@ I am going to use the Read function to explain these types of IO model.
 ###1.Blocking IO 
 ![alt text](/img/IO/Blocking.png) 
 ###2.Nonblocking IO
-![alt text](/img/IO/Nonblocking.png) 
+![alt text](/img/IO/NonBlocking.png) 
 ###3.IO Multiplexing (select and poll)
 ![alt text](/img/IO/IOMultiplexing.png) 
 ###4.Signal-Driven IO (SIGIO)
