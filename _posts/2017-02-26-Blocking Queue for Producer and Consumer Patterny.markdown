@@ -6,7 +6,7 @@ categories: C++ 11,Linux,Producer and Consumer,Condition Variable
 ---
 As we knew, The queue is the core component of the producer and consumer pattern. and the another important one is how to wake up one of the consumer.
 Because Most of time, we get more than one comsumer. 
-Fortunately we can combile the queue and condition variable to achieve this goal using C++ 11.
+Fortunately we can combine the queue and condition variable to achieve this goal using C++ 11.
 
 
 {% highlight cpp %}
