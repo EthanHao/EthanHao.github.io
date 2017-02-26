@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Blocking Queue for Producer and consumer pattern"
-date:   2017-02-22 10:45:20 -0600
+date:   2017-02-26 10:45:20 -0600
 categories: C++ 11,Linux,Producer and Consumer,Condition Variable
 ---
 As we knew, The queue is the core component of the producer and consumer pattern. and the another important one is how to wake up one of the consumer.
