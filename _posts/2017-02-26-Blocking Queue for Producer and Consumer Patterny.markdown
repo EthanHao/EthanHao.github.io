@@ -41,4 +41,4 @@ template<class T>
 
 
 By the way , the condition variable only can be working with the unique_lock ,not the lock_guard. We must take care of that. The resaon is the wait function of the condition_variable
-will unlock the mutex. actually lock_guard does't expost the manually unlock function to the outside.
+will unlock the mutex. actually lock_guard does't expose the manually unlock function to the outside.
