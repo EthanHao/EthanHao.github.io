@@ -1,44 +1,65 @@
 ---
 layout: post
-title:  "Blocking Queue for Producer and consumer pattern"
-date:   2017-02-26 10:45:20 -0600
-categories: C++ 11,Linux,Producer and Consumer,Condition Variable
+title:  "A simple memory pool template "
+date:   2017-02-27 10:45:20 -0600
+categories: C++ 11,Linux,MemoryPool
 ---
-As we knew, The queue is the core component of the producer and consumer pattern. and the another important one is how to wake up one of the consumer.
-Because Most of time, we get more than one comsumer. 
-Fortunately we can combine the queue and condition variable to achieve this goal using C++ 11.
+If you run into a situation that you need to allocate a specific object very frequently. Obviously the traditional way will cause the memeory fragment because of 
+frequent allocation on heap, and you will get more risky for failure of allocation after a certain running period. so this situation the memory pool definately is your
+best choice. 
+
+I got this situation on my open source project. A lot of client will connect and disconnect the server occasionally. I need to allocate a chunk of heap memory
+for each connecting, and recycle the memeory when disconnecting. so I came up with a very simple and effective memeory pool to solve this problem.Here is the code .
+
 
 
 {% highlight cpp %}
-template<class T>
-    class ProducerConsumerQueue {
-    private:
-        std::queue<T> mQueue;
-        std::mutex mMutex;
-        std::condition_variable mCondition;
-    public:
-        
-        void enqueue(const T& nValue) {
-            std::unique_lock<std::mutex> lock(mMutex);
-            mQueue.push(nValue);
-            //Notify one thread to handle this item
-            mCondition.notify_one();
-        }
-
-        T dequeue() {
-            std::unique_lock<std::mutex> lock(mMutex);
-            //Avoid spurious waken
-            mCondition.wait(lock,[this]{return !mQueue.empty();} );
-           
-            T lFrontItem = mQueue.front();
-            mQueue.pop();
-            return lFrontItem;
-        }
-
-
+ template <typename T > class MemoryPool {
+        public  :
+            MemoryPool(int nSize) throw (std::bad_alloc&) : mnSize(nSize){
+                std::unique_ptr<T[]> lp (new T[mnSize]);
+                mArrayBuffer = std::move(lp);
+                mnFreeSize = mnSize;
+                for(int i = 0; i < mnSize ; i++)
+                    mBitSet.push_back(false);
+                    
+            }
+            
+            T* alloc()  {
+                if(!mArrayBuffer)
+                    return nullptr;
+                //check a empty slot in the bitset
+                for(int i = 0 ; i < mnSize ; i++)
+                {
+                    if(mBitSet[i] == false)
+                    {
+                        mnFreeSize--;
+                        mBitSet[i] = true;
+                        return &mArrayBuffer[i]; 
+                    }
+                }
+                return nullptr;
+            }
+            void free(T* np) {
+                if(!mArrayBuffer)
+                    return ;
+                if(np != nullptr && 
+                        ( np >= &mArrayBuffer[0] && np <= &mArrayBuffer[mnSize-1]) ){
+                    int offset = (np- &mArrayBuffer[0]) % sizeof(T);
+                    mBitSet[offset] = false;
+                    mnFreeSize++;
+                } 
+            }
+            int GetFreeSize() {return mnFreeSize;}
+        private:
+            const int mnSize;
+            int mnFreeSize;
+            std::vector<bool> mBitSet;
+            std::unique_ptr<T[]> mArrayBuffer;
+                   
     };
 {% endhighlight  %}
 
 
-By the way , the condition variable only can be working with the unique_lock ,not the lock_guard. We must take care of that. The resaon is the wait function of the condition_variable
-will unlock the mutex. actually lock_guard does't expose the manually unlock function to the outside.
+By the way , in the first place I wanted to use the BitSet instead of Vector<Bool>. But bitset in C++ 11 can not support dynamically size changing. And sound like the compiler
+will optimize the vector<Bool> as a bitset. so I think the vector<Bool> is the right answer for this class.
