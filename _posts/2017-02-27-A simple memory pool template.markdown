@@ -4,12 +4,12 @@ title:  "A simple memory pool template "
 date:   2017-02-27 10:45:20 -0600
 categories: C++ 11,Linux,MemoryPool
 ---
-If you run into a situation that you need to allocate a specific object very frequently. Obviously the traditional way will cause the memeory fragment because of 
-frequent allocation on heap, and you will get more risky for failure of allocation after a certain running period. so this situation the memory pool definately is your
+If you run into a situation that you need to allocate a specific object very frequently. Obviously the traditional way will cause the memory fragment because of 
+frequent allocation on heap, and you will get more risk for failure of allocation after a certain running period. so this situation the memory pool definately is your
 best choice. 
 
 I got this situation on my open source project. A lot of client will connect and disconnect the server occasionally. I need to allocate a chunk of heap memory
-for each connecting, and recycle the memeory when disconnecting. so I came up with a very simple and effective memeory pool to solve this problem.Here is the code .
+for each connecting, and recycle the memeory when disconnecting. so I came up with a very simple and effective memory pool to address this problem.Here is the code .
 
 
 
@@ -61,5 +61,5 @@ for each connecting, and recycle the memeory when disconnecting. so I came up wi
 {% endhighlight  %}
 
 
-By the way , in the first place I wanted to use the BitSet instead of Vector<Bool>. But bitset in C++ 11 can not support dynamically size changing. And sound like the compiler
+By the way , in the first place I wanted to use the BitSet in place of Vector<Bool>. But Bitset in C++ 11 can not support dynamically size changing. And sound like the compiler
 will optimize the vector<Bool> as a bitset. so I think the vector<Bool> is the right answer for this class.
