@@ -10,15 +10,15 @@ Usually the reactor pattern use one process and one thread. The main goal of Rea
 
 ###  1. Simply introduce the Reactor pattern.   
 
-![reactor](../img/reactor.png)
+![reactor](/img/reactor.png)
 
 ### 2. Reactor pattern with threadpool
 
-  ![Open Device](./img/reactorWithPool.png)
+  ![Open Device](/img/reactorWithPool.png)
 
 ### 3.The detail of worker
 
-  ![Open](./img/ReactorMoreDetail.png)
+  ![Open](/img/ReactorMoreDetail.png)
 
 
   
