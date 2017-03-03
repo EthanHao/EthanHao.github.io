@@ -62,3 +62,50 @@ a = add(a);
 {% endhighlight  %}
 
 We can see after a was declared as a volatile variable, the compiler will not force to get the a value from the memory.
+
+
+### No optimization  
+
+As we all knew, the compiler will do some great job to improve the performance and reduce the size. But sometimes some optimization we want to avoid. 
+{% highlight cpp %}  
+>int add(int na) { 
+	return na + 1; 
+}
+
+int main()
+{
+	int a = 1;
+	int b ;
+	a = add(a);
+	b = a;
+	return b;
+**00C51546  push        2** 
+00C51548  pop         eax  
+}
+{% endhighlight  %}
+
+the result looks creazy, the compiler just generate one line assemble code for use , and this line get nothing about the variable a and b.
+what if we declare the variable a and b as a volatile variable.
+ 
+{% highlight cpp %} 
+int main()
+{
+0086150C  push        ebp  
+0086150D  mov         ebp,esp  
+0086150F  push        ecx  
+	volatile int a = 1;
+00861510  mov         dword ptr [ebp-4],1  
+	volatile int b ;
+	a = add(a);
+00861517  mov         eax,dword ptr [a]  
+0086151A  inc         eax  
+0086151B  mov         dword ptr [a],eax  
+	b = a;
+0086151E  mov         eax,dword ptr [a]  
+00861521  mov         dword ptr [a],eax  
+	return b;
+00861524  mov         eax,dword ptr [b]  
+}
+{% endhighlight  %}
+
+### Execution Order
