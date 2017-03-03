@@ -2,7 +2,7 @@
 layout: post
 title:  "DeakLock detecting using GDB "
 date:   2017-03-03 10:45:20 -0600
-categories: C++, GDB,  MultiThread,
+categories: C++11, GDB,  MultiThread,
 ---
 Instruction  
 I think Volatile keyword in C++ is not obvious and direct as other keyword like const,mutable etc. The main reason is we don't know how Volatile works. 
