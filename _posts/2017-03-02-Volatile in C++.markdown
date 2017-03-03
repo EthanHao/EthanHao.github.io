@@ -66,7 +66,7 @@ We can see after a was declared as a volatile variable, the compiler will not fo
 
 ### No optimization  
 
-As we all knew, the compiler will do some great job to improve the performance and reduce the size. But sometimes some optimization we want to avoid. 
+As we all know, the compiler will do some great job to improve the performance and reduce the size. But sometimes some optimization we want to avoid. 
 {% highlight cpp %}  
 >int add(int na) { 
 	return na + 1; 
@@ -84,7 +84,7 @@ int main()
 }
 {% endhighlight  %}
 
-the result looks creazy, the compiler just generate one line assemble code for use , and this line get nothing about the variable a and b.
+the result looks crazy, the compiler just generates one line assemble code for use , and this line gets nothing about the variable a and b.
 what if we declare the variable a and b as a volatile variable.
  
 {% highlight cpp %} 
@@ -109,7 +109,7 @@ int main()
 {% endhighlight  %}
 
 ### Execution Order
-Sometimes the assemble code excution order is not the same as the order you c++ code. that's is a big problem for muitithreaded programming. Assume we gotta share two variables between
+Sometimes the assemble code excution order is not the same as the order of your c++ code. that's is a big problem for muitithreaded programming. Assume we gotta share two variables between
 two threads. one thread do things like the following piece of code.
 {% highlight cpp %} 
 a = 1;
@@ -122,6 +122,7 @@ if(b == 1)
 	assert(a == 1);
 }
 {% endhighlight  %}
-that could be a risk if you turn on code optimization. sometimes the compiler will generate different order of code. even though you declare b as a volatile variable.
+that could be a risk if you turn on code optimization. sometimes the compiler will generate different order of code. even though you declare b as a volatile variable. 
+so in this senario we prefer using something like mutex to keep the execution order.
 
 
