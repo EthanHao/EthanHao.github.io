@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "DeakLock detecting using GDB "
-date:   2017-03-02 10:45:20 -0600
+date:   2017-03-03 10:45:20 -0600
 categories: C++, GDB,  MultiThread,
 ---
 Instruction  
