@@ -5,9 +5,7 @@ date:   2017-03-03 10:45:20 -0600
 categories: C++11, GDB,  MultiThread,
 ---
 Instruction  
-I think Volatile keyword in C++ is not obvious and direct as other keyword like const,mutable etc. The main reason is we don't know how Volatile works. 
-We are told this keyword usually would be used to qulify the shared value in muitithreaded envoriment. But even though we need to take a lot of care to use this keyword.
-And The direct way to learn Volatile is through the assemble code.
+DeakLock in multithreaded programmming is really an annoying thing. Something if we are lucky, we might get some deadlock information from debugger.
 
 ### Prerequiste  
 * g++, gdb
@@ -49,22 +47,25 @@ int main(int argc, char**argv) {
 
 {% endhighlight  %}
 
-#### compile with gdb information  
+
+#### compile with gdb information     
 > g++ test.cpp -ggdb -lpthread -std=c++11 -o test  
+
 #### run it  
 > ./test   
-#### check the result,it deadlocked as we expected  
->ethan@ubuntu:~/Desktop$ ./test
+
+#### check the result,it deadlocked as we expected   
+>ethan@ubuntu:~/Desktop$ ./test  
 Hello CMake World!
 
 
-### Analyze using gdb  
+### Analyze using gdb   
 #### Get the pid  
 > ethan@ubuntu:~$ ps -a | grep test
   4094 pts/2    00:00:00 test
 
 #### Attach the pid using another terminal  
->ethan@ubuntu:~/Desktop$ sudo gdb -q test 4094
+>ethan@ubuntu:~/Desktop$ sudo gdb -q test 4094    
 [sudo] password for ethan: 
 Reading symbols from test...done.
 Attaching to program: /home/ethan/Desktop/test, process 4094
@@ -72,36 +73,36 @@ Attaching to program: /home/ethan/Desktop/test, process 4094
 [Thread debugging using libthread_db enabled]
 
 #### Backtrace  
->(gdb) bt
+>(gdb) bt  
 #0  0x00007f65c7d3e9cd in pthread_join (threadid=140075107923712, 
     thread_return=0x0) at pthread_join.c:90
 #1  0x00007f65c7a6cb97 in std::thread::join() ()
    from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
 #2  0x00000000004011ea in main (argc=1, argv=0x7fff7a26af28) at test.cpp:27
 
-#### Info threads  
->(gdb) info threads
+#### Info threads    
+>(gdb) info threads  
   Id   Target Id         Frame 
 * 1    Thread 0x7f65c815a740 (LWP 4094) "test" 0x00007f65c7d3e9cd in pthread_join (threadid=140075107923712, thread_return=0x0) at pthread_join.c:90
   2    Thread 0x7f65c70cb700 (LWP 4095) "test" __lll_lock_wait ()
     at ../sysdeps/unix/sysv/linux/x86_64/lowlevellock.S:135
 (gdb) thread 2
 
-#### Info of mutex  
-(gdb) p gMutex
+#### Info of mutex     
+(gdb) p gMutex  
 $1 = {<std::__mutex_base> = {_M_mutex = {__data = {__lock = 2, __count = 0, 
         ***__owner = 4095,*** __nusers = 1, __kind = 0, __spins = 0, __elision = 0, 
         __list = {__prev = 0x0, __next = 0x0}}, 
       __size = "\002\000\000\000\000\000\000\000\377\017\000\000\001", '\000' <repeats 26 times>, __align = 2}}, <No data fields>}
 
-#### Switch to the thread  
->(gdb) thread 2
+#### Switch to the thread    
+>(gdb) thread 2  
 [Switching to thread 2 (Thread 0x7f65c70cb700 (LWP 4095))]
 #0  __lll_lock_wait () at ../sysdeps/unix/sysv/linux/x86_64/lowlevellock.S:135
 135	../sysdeps/unix/sysv/linux/x86_64/lowlevellock.S: No such file or directory.
 
-#### Check the stack of that thread
->(gdb) bt
+#### Check the stack of that thread  
+>(gdb) bt  
 #0  __lll_lock_wait () at ../sysdeps/unix/sysv/linux/x86_64/lowlevellock.S:135
 #1  0x00007f65c7d3fdfd in __GI___pthread_mutex_lock (mutex=0x6052e0 <gMutex>)
     at ../nptl/pthread_mutex_lock.c:80
