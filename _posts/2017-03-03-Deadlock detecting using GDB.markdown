@@ -4,7 +4,7 @@ title:  "DeakLock detecting using GDB "
 date:   2017-03-03 10:45:20 -0600
 categories: C++11, GDB,  MultiThread,
 ---
-Instruction  
+ 
 DeakLock in multithreaded programmming is really an annoying thing. Something if we are lucky, we might get some deadlock information from debugger.
 
 ### Prerequiste  

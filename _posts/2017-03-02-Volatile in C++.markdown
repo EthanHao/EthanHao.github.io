@@ -4,7 +4,6 @@ title:  "Volatile Keyword in　C++ "
 date:   2017-03-02 10:45:20 -0600
 categories: C++, Volatile, MultiThread,
 ---
-Instruction  
 I think Volatile keyword in C++ is not obvious and direct as other keyword like const,mutable etc. The main reason is we don't know how Volatile works. 
 We are told this keyword usually would be used to qulify the shared value in muitithreaded envoriment. But even though we need to take a lot of care to use this keyword.
 And The direct way to learn Volatile is through the assemble code.
