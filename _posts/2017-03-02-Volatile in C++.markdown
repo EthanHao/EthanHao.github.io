@@ -79,7 +79,7 @@ int main()
 	a = add(a);
 	b = a;
 	return b;
-**00C51546  push        2** 
+#### 00C51546  push        2
 00C51548  pop         eax  
 }
 {% endhighlight  %}
@@ -109,3 +109,19 @@ int main()
 {% endhighlight  %}
 
 ### Execution Order
+Sometimes the assemble code excution order is not the same as the order you c++ code. that's is a big problem for muitithreaded programming. Assume we gotta share two variables between
+two threads. one thread do things like the following piece of code.
+{% highlight cpp %} 
+a = 1;
+b = 1
+{% endhighlight  %}
+and another thread do thing like this 
+{% highlight cpp %} 
+if(b == 1)
+{
+	assert(a == 1);
+}
+{% endhighlight  %}
+that could be a risk if you turn on code optimization. sometimes the compiler will generate different order of code. even though you declare b as a volatile variable.
+
+
