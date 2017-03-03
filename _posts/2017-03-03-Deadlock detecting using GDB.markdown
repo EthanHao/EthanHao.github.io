@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "DeakLock detecting using GDB "
+title:  "DeadLock detecting using GDB "
 date:   2017-03-03 10:45:20 -0600
 categories: C++11, GDB,  MultiThread,
 ---
