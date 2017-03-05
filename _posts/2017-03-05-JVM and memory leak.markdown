@@ -8,7 +8,7 @@ categories: Java,Memory Leak,Performance,
 What is memory leaking in Java? and what kind of result memory leaking can bring? The first result I can come up with is lowerring performance.
 Let's dig into it from the memory model of JVM 
 
-###Mode of JVM
+### Mode of JVM  
 Speaking of the memory model , we could use some tool like VisualJVM and VisualGC to observer the inside of JVM. 
 
  ![alt text](/img/JVM/pool.png) 
@@ -47,7 +47,7 @@ PS MarkSweep is a parallel scavenge mark-sweep collector, it will check the mark
 
 Let’s back to our problem, what do these collection numbers mean? As we can see, the PS scavenge collector was triggered 14 times during the lifetime of this application. The triggered reason is allocation failure. That means if you want to new object on heap, but JVM found there is no enough free space for this object on PS Eden Space, so in this condition, JVM will call PS scavenge to collect the free memory in the Eden. So PS scavenge will do his job, free some objects which no one would use it again, copy the survivor objects to the PS Survivors, and copy those objects who have been living so long.
 
-###How Garbage collection impact performance
+### How Garbage collection impact performance 
 
 
 Speaking of the overall impact on the throughput performance, we should know one thing, are the application threads still running 
@@ -66,7 +66,8 @@ Back to JVM, they got two ways to trigger garbage collection, one is periodical,
 But Java is improving his virtual machine, comparing to JVM1.1,  It splits the memory pool into young
  generation and old generation since JVM1.2, and this is a balance of frequency and duration. 
 
-###Memory leaking increase garbage collection
+### Memory leaking increase garbage collection
+
 These information means memory leaking existing in this application. What’s memory leaking in Java? 
  Let’s go through the definition of memory leaking.
 Definition of memory leaking in Java: objects are no longer being used by the application,
@@ -83,12 +84,14 @@ Strong reference means these two object has the same lifetime, otherwise it is a
  each element in this vector points to another object, after these objects get a very short lifetime, 
  you will no longer use it, and you anticipate the garbage collector would free memory of these objects
  for you. But unfortunately, the vector get the weak reference to these objects, 
- so garbage collector thinks these objects are alive and not to free them.  If these objects occupy a lot of memory,
+ so garbage collector thinks these objects are alive and not to free them.  If these objects occupy a lot of memory, 
  you can image the JVM will trigger a lot of garbage collection because of out of memory. This would cause the performance of your application so bad.
+ 
 Another situation is you got two objects and they are referring to each other like doubly linked list. 
 The garbage collection also cannot free the memory immediately for you.
 As we can see, the memory leaking is not just about the leaking, it is also about the performance. 
 So when we design and code our application, we should take a lot of care about avoiding memory leaking. 
+
  The following are some hand-on quick tip to avoid memory leaking.
  
 •	Pay attention to collection class like HashMap, Array, etc. and do you best to shorten their lifetime. 
