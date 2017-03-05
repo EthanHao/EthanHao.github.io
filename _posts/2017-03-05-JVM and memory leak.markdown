@@ -58,12 +58,14 @@ performance of the application, in this example according to the output for the 
  free the memory manually, but the upside of freeing memory manually is there are only effective objects in the memory, all the ineffective 
  objects would be freed in time. So If we use C++ to implement this application, we can save the garbage collection time to do some business stuff, 
  the throughput performance of C++ version will be better than the Java version.
-Back to JVM, they got two ways to trigger garbage collection, one is periodical, the other one is waiting until getting failure to allocate new object.
+
+ Back to JVM, they got two ways to trigger garbage collection, one is periodical, the other one is waiting until getting failure to allocate new object.
  If we use first way, that means we get garbage collection more frequently, also means all the threads in application will be suspended 
  frequently in a short time, that will cause increasing context switch and lower the performance. 
  If we use the second way, that means we got a lot of objects to handle, so we need to take more time to collect these objects, 
  and the threads in application will be suspended longer than first way. It’s hard to make a balance.
-But Java is improving his virtual machine, comparing to JVM1.1,  It splits the memory pool into young
+
+ But Java is improving his virtual machine, comparing to JVM1.1,  It splits the memory pool into young
  generation and old generation since JVM1.2, and this is a balance of frequency and duration. 
 
 ### Memory leaking increase garbage collection
@@ -75,8 +77,9 @@ Definition of memory leaking in Java: objects are no longer being used by the ap
 For the report we can see some of leaking classes are collection class like Array, HashMap and TreeMap; 
 some of them are very basic classes like Object,Class and String; and two of them are about Reflect.
 How could this happen? Especially we use garbage collector, the garbage collector was supposed to collect everything. 
-But unfortunately, the truth is cold. Even the garbage collector is very smart, we also got some memory leaking. Let’s start 
-to dig into it from a simple concept- reference. Actually in code level, there are a few types of reference. 
+But unfortunately, the truth is cold. Even the garbage collector is very smart, we also got some memory leaking.
+
+Let’s start to dig into it from a simple concept- reference. Actually in code level, there are a few types of reference. 
 For simplicity, we just separate into two types of reference, strong reference and weak reference. 
 Strong reference means these two object has the same lifetime, otherwise it is a weak reference. 
  Strong reference is simple, we get no chance to get memory leaking with the same lifetime. 
