@@ -68,11 +68,9 @@ performance of the application, in this example according to the output for the 
 
 ### Memory leaking increase garbage collection
 We using jmap get a histogram report.
--------------------  
-HISTO REPORT:  
 
+HISTO REPORT:  
  num     #instances         #bytes  class name  
-----------------------------------------------  
    1:           785       16318208  [I  
    2:           255        4220224  [Ljava.util.HashMap$Node;  
    3:          7788         531440  [C  
