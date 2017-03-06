@@ -7,7 +7,7 @@ categories: C++,Memory Leak,
 Sometimes if you don't get any memory leak detecting tool, it's hard to find which memory leaked. even though you get the address of leaking memory, it's difficult to
 map this address to a specific class or specific code line where you allocated this memory.
 Usually we can hook the operator new to track the memory. so based on this theory , we can develop some very simple class to help us to track the memory.
-So I just implemented a helper class to track the memory. please see the code from (here)[https://github.com/EthanHao/MemLeakTracker.git]
+So I just implemented a helper class to track the memory. please see the code from [here](https://github.com/EthanHao/MemLeakTracker.git)
 
 
 # Add header file
