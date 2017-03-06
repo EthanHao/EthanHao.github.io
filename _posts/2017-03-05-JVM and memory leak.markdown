@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "JVM and memory leak"
-date:   2017-03-03 10:45:20 -0600
+date:   2017-03-05 10:45:20 -0600
 categories: Java,Memory Leak,Performance,
 ---
 
