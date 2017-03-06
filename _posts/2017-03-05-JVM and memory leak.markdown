@@ -41,11 +41,9 @@ And conventionally, we call the PS Eden Space and PS Survivor young generation. 
  
  ![alt text](/img/JVM/gc.png) 
 
- PS Scavenge is a parallel copy collector, his job is copying the objects in PS Eden Space to Ps Survivor or between two PS Survivors in multithreaded environment. And if it finds some objects have been living so long, it will copy these objects to the old generation pool.
+PS Scavenge is a parallel copy collector, his job is copying the objects in PS Eden Space to Ps Survivor or between two PS Survivors in multithreaded environment. And if it finds some objects have been living so long, it will copy these objects to the old generation pool.
 
 PS MarkSweep is a parallel scavenge mark-sweep collector, it will check the mark of each block of memory and to decide if we can collect it.
-
-Let’s back to our problem, what do these collection numbers mean? As we can see, the PS scavenge collector was triggered 14 times during the lifetime of this application. The triggered reason is allocation failure. That means if you want to new object on heap, but JVM found there is no enough free space for this object on PS Eden Space, so in this condition, JVM will call PS scavenge to collect the free memory in the Eden. So PS scavenge will do his job, free some objects which no one would use it again, copy the survivor objects to the PS Survivors, and copy those objects who have been living so long.
 
 ### How Garbage collection impact performance 
 
@@ -69,11 +67,28 @@ performance of the application, in this example according to the output for the 
  generation and old generation since JVM1.2, and this is a balance of frequency and duration. 
 
 ### Memory leaking increase garbage collection
+We using jmap get a histogram report.
+-------------------  
+HISTO REPORT:  
+
+ num     #instances         #bytes  class name  
+----------------------------------------------  
+   1:           785       16318208  [I  
+   2:           255        4220224  [Ljava.util.HashMap$Node;  
+   3:          7788         531440  [C  
+   4:          2164         304344  [Ljava.lang.Object;  
+   5:          1915         215864  java.lang.Class  
+   6:           502         210864  [B  
+   7:          7706         184944  java.lang.String  
+   8:          1446         127248  java.lang.reflect.Method  
+   9:          1769          70760  java.util.TreeMap$Entry  
+  10:           730          52560  java.lang.reflect.Field  
 
 These information means memory leaking existing in this application. What’s memory leaking in Java? 
  Let’s go through the definition of memory leaking.
-Definition of memory leaking in Java: objects are no longer being used by the application,
+>Definition of memory leaking in Java: objects are no longer being used by the application,
  but Garbage Collector cannot remove them because they are being referenced.
+
 For the report we can see some of leaking classes are collection class like Array, HashMap and TreeMap; 
 some of them are very basic classes like Object,Class and String; and two of them are about Reflect.
 How could this happen? Especially we use garbage collector, the garbage collector was supposed to collect everything. 
