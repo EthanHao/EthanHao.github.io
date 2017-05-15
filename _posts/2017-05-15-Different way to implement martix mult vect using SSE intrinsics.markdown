@@ -10,9 +10,9 @@ is a very typical and common operation you would run into so often.
 
 
 # Prerequisite
-Vect4D_SIMD is a vector class reprensent a vector inclulding x,y,z,w four float numbser .
-Matrix_SIMD is a matrix class inclulding four Vect4D_SIMD member, v0,v1,v2,v3 respectively.
-In this application we use Col Major to implement the mulitiplication.
+Vect4D_SIMD is a vector class reprensent a vector inclulding x,y,z,w four float numbser .  
+Matrix_SIMD is a matrix class inclulding four Vect4D_SIMD member, v0,v1,v2,v3 respectively.  
+In this application we use Col Major to implement the mulitiplication.  
 
 # Rough code about Stress test
 ```cpp
