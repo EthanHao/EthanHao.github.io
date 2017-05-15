@@ -36,7 +36,7 @@ for (int i = 0; i < 1000; i++)
 	
 }
 ```
-## Running Time about stress test in release mode. Matrix*Vect_SIMD: 1.657408s
+##### Running Time about stress test in release mode. Matrix*Vect_SIMD: 1.657408s
  
 # Second way using _mm_dp_ps and _mm_shuffle_ps
 ```cpp
@@ -50,7 +50,7 @@ Vect4D_SIMD Matrix_SIMD::operator * (const Vect4D_SIMD &v) const
 }
 
 ```
-## Running Time about stress test in release mode.   Matrix*Vect_SIMD: 1.618239
+##### Running Time about stress test in release mode.   Matrix*Vect_SIMD: 1.618239
   
 # Third way using _mm_add_ps combining with _mm_add_ps
 ```cpp
@@ -67,7 +67,7 @@ Vect4D_SIMD Matrix_SIMD::operator * (const Vect4D_SIMD &v) const
 }
 
 ```
-## Running Time about stress test in release mode.  Matrix*Vect_SIMD: 1.586541
+##### Running Time about stress test in release mode.  Matrix*Vect_SIMD: 1.586541
  
 # Fourth way using _mm_hadd_ps and _mm_mul_ps
 ```cpp
@@ -80,5 +80,5 @@ Vect4D_SIMD Matrix_SIMD::operator * (const Vect4D_SIMD &v) const
 }
 
 ```
-## Running Time about stress test in release mode.   Matrix*Vect_SIMD: 1.334228
+##### Running Time about stress test in release mode.   Matrix*Vect_SIMD: 1.334228
 
