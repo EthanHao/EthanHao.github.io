@@ -17,9 +17,9 @@ Please check my detailed resume from [**here**!](/data/EthanHao-resume.pdf)
 
 Sincerely
 
-Ethan Hao
-Cellphone:312-532-4772
-haosheng@gmail.com
+Ethan Hao  
+Cellphone:312-532-4772  
+ethanhaous@gmail  
 
 
 
