@@ -7,7 +7,7 @@ categories: C++,Proxy Object, Type Conversion Operator Overloading
 Sometimes we want to write our code in a normal way ,like multiple number multiplication. Usually we write it like this f = a * b * c * d * e;
 But in this way the complier will generate a lot of hidder temporaries for you.  How to remove this temporaries but not giving up the old way,
 and at the same time to improve the performance. This way is crazy , but it is worth to do this sometimes.
-In this blod, I am going to show the difference of performance using two different way.
+In this blog, I am going to show the difference of performance using two different way.
 
 #### Using old way, no proxy object  
 ```cpp
