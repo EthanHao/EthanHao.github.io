@@ -4,7 +4,7 @@ title:  "C++ Performance: Utilize the Return Value Optimiztion of Complier (RVO)
 date:   2017-06-12 10:45:20 -0600
 categories: C++,RVO
 ---
-This post is the following up of last post(using *= in place of *). In the last post, we implemented the operator* function in a very normal way(define a temporary variable),
+This post is the following up of last post( using *= rather than * ). In the last post, we implemented the operator* function in a very normal way(define a temporary variable),
 some complier can optimize your code in this way, they call it Named Return Value Optimiztion. But some complier do not. we can not count on that. The only thing we can count on 
 is the nameless return value optimiztion which is supported by almost all of the complier of C++.
 ```cpp
@@ -105,13 +105,13 @@ public:
 
 ```
 The calling flow  of operator* after optimizing by the complier  
-Operator *                (c = a * b)  
-V Customized Constructor  (c(x*rh.x, y*rh.y) customized constructor)
-V Destructor              (c destrctor)
+Operator *                (c = a * b)   
+V Customized Constructor  (c(x*rh.x, y*rh.y) customized constructor)  
+V Destructor              (c destrctor)  
 
-The calling flow  of operator*= after optimizing by the complier  
-V Copy Constructor      (c = a)  
-Operator *=				(c *= b)  
+The calling flow  of operator*= after optimizing by the complier   
+V Copy Constructor      (c = a)   
+Operator *=				(c *= b)   
 V Destructor			(c destrctor)  
 
 But even though we used the RVO to optimize your code, but we can see using *= operator is still faster than the new version of *operator.
