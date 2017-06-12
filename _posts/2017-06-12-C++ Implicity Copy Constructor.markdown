@@ -2,7 +2,7 @@
 layout: post
 title:  "C++ Performance: Using the Default copy constructor rather than the explicit one"
 date:   2017-06-12 10:45:20 -0600
-categories: C++,RVO
+categories: C++,Copy Constructor
 ---
 Shocking truth about the performance between default copy constructor and the one you defined. 
 In this experiment ,we do it with two steps. first with the default or implicity copy constructor,
