@@ -137,3 +137,4 @@ V c = a;
 
 you can see the disassembly code with implicit or default copy constructor, they just move member variables one by one, do not to call the default copy constructor.
 that means We do not need to push something to the stack ,and call some functions. 
+So for simple class I recommand using the default copy constructor and copy assignment rather than the explicit one.
