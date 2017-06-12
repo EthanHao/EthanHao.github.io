@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "C++ Performance: Using the Default copy constructor rather than the explicity one"
+title:  "C++ Performance: Using the Default copy constructor rather than the explicit one"
 date:   2017-06-12 10:45:20 -0600
 categories: C++,RVO
 ---
 Shocking truth about the performance between default copy constructor and the one you defined. 
 In this experiment ,we do it with two steps. first with the default or implicity copy constructor,
-the second one we use an explicity copy constructor;
+the second one we use an explicit copy constructor;
 
 ### The First Step
 ```cpp
@@ -71,7 +71,7 @@ int main()
 ```
 
 
-### The Second Step, Modify the class V, give it an explicity copy constructor.
+### The Second Step, Modify the class V, give it an explicit copy constructor.
 ```cpp
 
 class V {
@@ -110,12 +110,12 @@ public:
 ```
 
 The Result
-#### * time : update:0.720582 ms  ** *= :0.471422 ms**  diff:0.249160 //the result of old version    
-#### * time : update:0.723414 ms  ** *= :0.700763 ms** diff:0.022651 //the result of new version     
+#### * time : update:0.720582 ms   *= :0.471422 ms  diff:0.249160 //the result of old version    
+#### * time : update:0.723414 ms   *= :0.700763 ms diff:0.022651 //the result of new version     
 This time we need compare the *= time, because in *= operator function the copy constructor would be called.  
 you can see the result, the default on is 30% faster. I am very curious about that truth. so I just dig into the disassembly code.   
 
-###The disassembly code with implicity or default copy constructor
+###The disassembly code with implicit or default copy constructor
 ```cpp
 V c = a;
 009A5D6B  mov         eax,dword ptr [a]  
@@ -125,7 +125,7 @@ V c = a;
 009A5D7D  mov         byte ptr [ebp-4],2  
 ```
 
-###The disassembly code with explicity copy constructor 
+###The disassembly code with explicit copy constructor 
 ```cpp
 		V c = a;
 009A1C3B  lea         eax,[a]  
@@ -135,5 +135,5 @@ V c = a;
 009A1C4A  mov         byte ptr [ebp-4],2  
 ```
 
-you can see the disassembly code with implicity or default copy constructor, they just move member variables one by one, do not to call the default copy constructor.
+you can see the disassembly code with implicit or default copy constructor, they just move member variables one by one, do not to call the default copy constructor.
 that means We do not need to push something to the stack ,and call some functions. 
