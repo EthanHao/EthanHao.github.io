@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "C++ Performance: Utilize the Return Value Optimiztion of Complier (RVO)"
-date:   2017-06-12 10:45:20 -0600
+date:   2017-06-12 16:45:20 -0600
 categories: C++,RVO
 ---
 This post is the following up of last post( using *= rather than * ). In the last post, we implemented the operator* function in a very normal way(define a temporary variable),

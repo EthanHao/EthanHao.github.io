@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "C++ Performance: Using C++ Proxy Object to remove temporaries"
-date:   2017-06-12 10:45:20 -0600
+date:   2017-06-12 18:45:20 -0600
 categories: C++,Proxy Object, Type Conversion Operator Overloading
 ---
 Sometimes we want to write our code in a normal way ,like multiple number multiplication. Usually we write it like this f = a * b * c * d * e;
