@@ -4,10 +4,10 @@ title:  "C++ Performance: Using *=,+=,/=,-= rather than *,+,/,- to remove tempor
 date:   2017-06-12 10:45:20 -0600
 categories: C++,Remove temporaries
 ---
-Suppose we defined a Class named V which overloaded the operator *,*=, then which way is faster if you want to do a multiplication of V.
+Suppose we defined a Class named V which overloaded the operator *,*=, then which way is faster if you want to do a multiplication of V.  
 first way V c = a * b;   
 second way V c = a;  c *= b;  
-Obvious the result is the same, but the thing we are curious is the timing. Let us do a expirement.
+Obvious the result is the same, but the thing we are curious is the timing. Let us do a expirement.  
 ```cpp
 
 class V {
