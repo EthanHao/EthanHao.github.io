@@ -116,5 +116,5 @@ V Copy Constructor      (c = a)
 Operator *=				(c *= b)  
 V Destructor			(c destrctor)  
 
-as we can see from the comparion, we save one destrctor and one default constructor in *= operator;
-so that is why we get the best performance from *= rather than *
+as we can see from the comparsion, we save one destrctor and one default constructor in *= operator;
+so that is why we get the best performance from *= rather than * .
