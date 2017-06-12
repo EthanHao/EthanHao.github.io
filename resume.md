@@ -3,11 +3,10 @@ layout: default
 ---
 Dear Hiring Manager:
 
-I'm an experienced master student of DePaul university, and I will graduate on this Jun 6th and can start working anytime after July. By the way, I am in Chicago now and willing to relocate anywhere.
+I'm an experienced master student of DePaul university(14 years C++ industrial experience), and I have graduated on this Jun 6th and can start working anytime after July. By the way, I am in Chicago now and willing to relocate anywhere.
 
-I think the best advantage of mine is not only focusing on coding but also the architecture and design, I am very confident for developing software with the quality of stable and high performance.
-
-In summary, I get a lot of passion on software development, you are totally worth to give me a chance.
+The most excithing thing I want to do is writing clean C++ codes and squeezing performance from C++ codes. No matter these codes is about the server applicationes or desktop applicationes, and 
+No matter what kink of operating system these applicationes runing on. 
 
 Please check out my detailed resume from [**here**!](/data/EthanHao-resume.pdf)
 
