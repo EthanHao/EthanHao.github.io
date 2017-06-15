@@ -17,5 +17,11 @@ Cellphone:312-532-4772
 ethanhaous@gmail  
 
 
+###Referal
+Ethan is a very experienced developer, he has been using C++ to achieve different software solutions for more than 10 years.  
+He demonstrated a very strong capability on developing all kind of components based on windows, including driver, service, library and GUI application, and Socket server based on Linux.
+At the same time, he also showed his profession on team collaboration, quick learning and strong adaptability. he just used one year to become the project manager from a new comer when he was in China International Futures. 
+Working with him is really a pleasant thing, he is totally trustable and professional.
+																							
 
  
