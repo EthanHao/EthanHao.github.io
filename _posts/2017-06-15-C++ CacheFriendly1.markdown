@@ -74,14 +74,14 @@ int main()
     return 0;
 }
 ```
-#### The result of Vtune:  this time the sizeof(Node) is 48 
-Elapsed Time:0.524s
-CPU Time: **0.479s**
-Memory Bound:79.8%of Pipeline Slots
-L1 Bound:**30.8%** of Clockticks
-L2 Bound:**14.8%** of Clockticks
-L3 Bound:**36.2%** of Clockticks
-DRAM Bound:0.0%of Clockticks
+#### The result of Vtune:  this time the sizeof(Node) is 48   
+Elapsed Time:0.524s  
+CPU Time: **0.479s**  
+Memory Bound:79.8%of Pipeline Slots  
+L1 Bound:**30.8%** of Clockticks  
+L2 Bound:**14.8%** of Clockticks  
+L3 Bound:**36.2%** of Clockticks  
+DRAM Bound:0.0%of Clockticks  
 Loads:277,208,316
 Stores:47,400,711
 
@@ -98,15 +98,15 @@ public:
 };
 
 ```
-#### The result of Vtune:  this time the sizeof(Node) is 12 
-Elapsed Time:0.417s
-CPU Time:**0.374s**
-Memory Bound:72.4%of Pipeline Slots
-L1 Bound:**34.4%**of Clockticks
-L2 Bound:**27.6%**of Clockticks
-L3 Bound:**10.9%**of Clockticks
-DRAM Bound:0.0%of Clockticks
-Loads:332,109,963
-Stores:57,600,864
+#### The result of Vtune:  this time the sizeof(Node) is 12  
+Elapsed Time:0.417s  
+CPU Time:**0.374s**  
+Memory Bound:72.4%of Pipeline Slots  
+L1 Bound:**34.4%**of Clockticks  
+L2 Bound:**27.6%**of Clockticks  
+L3 Bound:**10.9%**of Clockticks  
+DRAM Bound:0.0%of Clockticks  
+Loads:332,109,963  
+Stores:57,600,864  
 
-you can see this time the L3 Bound decreased so much. as we all know, the L3 cache is the slowest one. so that means we got less CPU time . 
+you can see this time the L3 Bound decreased so much. as we all know, the L3 cache is the slowest one. so that means we got less CPU time in total . 
