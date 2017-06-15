@@ -2,7 +2,7 @@
 layout: post
 title:  "C++ Performance: Cache Friendly(1) Keep your structure as small as possible"
 date:   2017-06-15 11:45:20 -0600
-categories: C++,RVO
+categories: C++,CPU Cache
 ---
 In this post, I will try to use a linear searching algorithm based on linked list to show the effect to performance when the size of the node is different.
 According to the locality theory (spatial locality), the better locality is, the faster your application will be. And the samller your structure is, the higer cache hit ratio is.
