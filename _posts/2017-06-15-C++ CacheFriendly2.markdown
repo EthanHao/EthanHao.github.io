@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "C++ Performance: Cache Friendly(2) Compact the discrete data as much as possible "
-date:   2017-06-15 12:45:20 -0600
+date:   2017-06-16 11:45:20 -0600
 categories: C++,CPU Cache
 ---
 In this post, I will try to use a linear searching algorithm based on linked list to show the effect to performance when data layout is different.
