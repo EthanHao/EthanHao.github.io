@@ -140,13 +140,13 @@ int main()
 
 ```
 #### The result of Vtune:  this time the sizeof(Node) is 12 ,based on a consectutive memory layout 
-CPU Time:0.218s
-Memory Bound:52.9%of Pipeline Slots
-L1 Bound:36.2%of Clockticks
-L2 Bound:2.9%of Clockticks
-L3 Bound:1.9%of Clockticks
-DRAM Bound:0.0%of Clockticks
-Loads:325,209,756
-Stores:55,200,828 
+CPU Time:**0.218s**  
+Memory Bound:52.9%of Pipeline Slots  
+L1 Bound:**36.2%** of Clockticks  
+L2 Bound:**2.9%** of Clockticks  
+L3 Bound:**1.9%** of Clockticks  
+DRAM Bound:0.0%of Clockticks  
+Loads:325,209,756  
+Stores:55,200,828   
 
 you can compare these two result, we can conclude the consectutive memory layout is really helpful to remove the case miss ratio and to improve the performance hugely.
