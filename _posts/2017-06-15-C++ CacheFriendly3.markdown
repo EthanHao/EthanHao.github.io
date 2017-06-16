@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "C++ Performance: Cache Friendly(3) Using row first when iterating 2D array "
+title:  "C++ Performance: Cache Friendly(3) Using row major when iterating 2D array "
 date:   2017-06-16 12:45:20 -0600
 categories: C++,CPU Cache
 ---
