@@ -1,88 +1,84 @@
 ---
 layout: post
-title:  "C++ Performance: Cache Friendly(3) Using row major when iterating 2D array "
-date:   2017-06-16 12:45:20 -0600
-categories: C++,CPU Cache
+title:  "C++ Performance: Prefer C++11 auto and for loop to old-fasion iterator loop  "
+date:   2017-11-27 9:45:20 -0600
+categories: C++,Performance
 ---
-In this post, I will try to use a linear searching algorithm based on linked list to show the effect to performance when data layout is different.
-First experiment I will use to create a linked list in a normal way which creates each node using new keyword. Second one I will create a linked list based on
-a consectutive memory space.  and the size of Node is the same.
+In this post, I will try to figure out what is the perfomance difference between auto-for loop introduced since C++11 and old-fasion iterator.  
 
 By the way this is an experiment, so I did not care about the memory leaking.
 
 #### Terms  
-L1 Bound： This metric shows how often machine was stalled without missing the L1 data cache. The L1 cache typically has the shortest latency. However, in certain cases like loads blocked on older stores, a load might suffer a high latency even though it is being satisfied by the L1.
-
-L2 Bound: This metric shows how often machine was stalled on L2 cache. Avoiding cache misses (L1 misses/L2 hits) will improve the latency and increase performance.
-
-L3 Bound: This metric shows how often CPU was stalled on L3 cache, or contended with a sibling Core. Avoiding cache misses (L2 misses/L3 hits) improves the latency and increases performance.
-
-LLC Miss Count:The LLC (last-level cache) is the last, and longest-latency, level in the memory hierarchy before main memory (DRAM). Any memory requests missing here must be serviced by local or remote DRAM, with significant latency. The LLC Miss Count metric shows total number of demand loads which missed LLC. Misses due to HW prefetcher are not included.  
 
 ```cpp
-
-const int rowsize = 10000;
-const int colsize = 10000;
-int global[rowsize][colsize];
-
-void InitRowMajor() {
-	for (int i = 0; i < rowsize; i++) {
-		for (int j = 0; j < colsize; j++) {
-			global[i][j] = i + j;
-		}
-	}
+TEST_F(ServerTest, TestIteratorPost){
+  std::map<int,int> lmap;
+  int n = 100000;
+  for(int i = 0; i < n; i++)
+    lmap[i]=i;
+  auto t1 = std::chrono::high_resolution_clock::now();
+  for(int i = 0; i < 10; i++)
+  {
+    for(auto lite = lmap.begin(); lite !=lmap.end(); lite++){
+      lite->second +=1;
+    }
+  }
+  auto t2 = std::chrono::high_resolution_clock::now();
+  int64_t llong = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count() ;
+  std::cout << "Delta t2-t1: " 
+              << llong << " microseconds"<< std::endl;
 }
-void InitColMajor() {
-	for (int i = 0; i < colsize; i++) {
-		for (int j = 0; j < rowsize; j++) {
-			global[j][i] = i + j;
-		}
-	}
+TEST_F(ServerTest, TestIteratorPre){
+  std::map<int,int> lmap;
+  int n = 100000;
+  for(int i = 0; i < n; i++)
+    lmap[i]=i;
+  auto t1 = std::chrono::high_resolution_clock::now();
+  for(int i = 0; i < 10; i++)
+  {
+    for(auto lite = lmap.begin(); lite !=lmap.end(); ++lite){
+      lite->second +=1;
+    }
+  }
+  auto t2 = std::chrono::high_resolution_clock::now();
+  int64_t llong = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count() ;
+  std::cout << "Delta t2-t1: " 
+              << llong << " microseconds"<< std::endl;
 }
-int main()
-{
-
-	
-
-	timer ltime,ltime2;
-	timer::initTimer();
-	ltime.tic();
-	//InitRowMajor();
-	InitColMajor();
-	ltime.toc();
-
-	
-
-	float f1 = ltime.timeInSeconds();
-	printf("* time : %f ms   \n", f1 * 1000.0f);
-
-    return 0;
+TEST_F(ServerTest, Test11Iterator){
+  std::map<int,int> lmap;
+  int n = 100000;
+  for(int i = 0; i < n; i++)
+    lmap[i]=i;
+  auto t1 = std::chrono::high_resolution_clock::now();
+  for(int i = 0; i < 10; i++)
+  {
+    for(auto& val : lmap){
+        val.second +=1;
+    }
+  }
+  auto t2 = std::chrono::high_resolution_clock::now();
+  int64_t llong = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count() ;
+  std::cout << "Delta t2-t1: " 
+              << llong << " microseconds"<< std::endl;
 }
 ```
-#### The result of Vtune: based on row major
+#### The result of these two test cases.
 
-CPU Time:**0.335s**  
-Memory Bound:17.0%of Pipeline Slots  
-L1 Bound:**8.7%**of Clockticks  
-L2 Bound:**0.0%**of Clockticks  
-L3 Bound:**0.0%**of Clockticks  
-DRAM Bound:10.5%of Clockticks  
-Loads:613,518,405  
-Stores:220,803,312  
-LLC Miss Count:**450,027**  
-Average Latency (cycles):24  
 
-#### The result of Vtune:  based on column major  
-lapsed Time:**1.440s**  
-CPU Time:**1.364s**  
-Memory Bound:43.7%of Pipeline Slots  
-L1 Bound:**0.0%**of Clockticks  
-L2 Bound:**9.4%**of Clockticks  
-L3 Bound:**2.5%**of Clockticks  
-DRAM Bound:14.7%of Clockticks  
-Loads:678,620,358  
-Stores:242,403,636  
-LLC Miss Count:**750,045**  
-Average Latency (cycles):26    
+1: [ RUN      ] ServerTest.TestIteratorPost  
+1: Delta t2-t1: 34660 microseconds  
+1: [       OK ] ServerTest.TestIteratorPost (137 ms)  
+1: [ RUN      ] ServerTest.TestIteratorPre  
+1: Delta t2-t1: 33279 microseconds  
+1: [       OK ] ServerTest.TestIteratorPre (133 ms)  
+1: [ RUN      ] ServerTest.Test11Iterator  
+1: Delta t2-t1: 19951 microseconds  
+1: [       OK ] ServerTest.Test11Iterator (119 ms)  
 
-you can compare these two result, row major iterating is almost 5 times faster than col major iterating in total.
+
+you can compare these result, auto-for loop > pre-iterator > post-iterator.
+so highly recommend , using auto-for loop as much as possible. it is way faster than old way.
+
+
+
