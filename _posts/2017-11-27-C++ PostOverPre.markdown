@@ -59,5 +59,7 @@ T T::operator++(int)() {
     return old;       // return our original value  
 }
 ```
-https://herbsutter.com/2013/05/13/gotw-2-solution-temporary-objects/
+
+you can see more detail from [Herb Sutter's website](https://herbsutter.com/2013/05/13/gotw-2-solution-temporary-objects/).
+
 
