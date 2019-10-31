@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "C++ Performance: Prefer post-increment to pre-increment "
+title:  "C++ Performance: Prefer pre-increment to post-increment "
 date:   2017-11-27 9:45:20 -0600
 categories: C++,Performance
 ---
